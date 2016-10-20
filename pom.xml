@@ -3,10 +3,10 @@
 	<modelVersion>4.0.0</modelVersion>
 
     <groupId>com.auth0.example</groupId>
-    <artifactId>auth0-spring-boot-sample-web-jsp</artifactId>
+    <artifactId>auth0-spring-mvc-passwordless-mfa-sample</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Auth0 Spring Boot Web JSP Sample</name>
-    <description>Auth0 Spring Boot Web JSP Sample</description>
+    <name>auth0-spring-mvc-passwordless-mfa-sample</name>
+    <description>auth0 spring mvc passwordless mfa sample</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
