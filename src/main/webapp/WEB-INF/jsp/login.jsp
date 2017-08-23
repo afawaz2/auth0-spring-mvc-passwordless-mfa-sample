@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
     <link rel="stylesheet" type="text/css" href="/css/jquery.growl.css"/>
     <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="http://cdn.auth0.com/js/lock-passwordless-2.2.min.js"></script>
+    <script src="https://325-22887863-gh.circle-artifacts.com/0/home/ubuntu/lock/build/lock.min.js"></script>
     <script src="/js/jquery.growl.js" type="text/javascript"></script>
 </head>
 <body>
@@ -27,21 +27,19 @@
 
         $(function () {
             setTimeout(function () {
-                var lock = new Auth0LockPasswordless('${clientId}', '${domain}');
-                lock.magiclink({
-                    authParams: {
-                        state: '${state}'
-                    },
-                    responseType: 'code',
-                    callbackURL: '${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, '')}' + '/callback'
-                }, function (err, email) {
-                    if (err) {
-                        growl.error({message: 'Error sending e-mail: ' + err.error_description});
-                        return;
+                var lock = new Auth0LockPasswordless('${clientId}', '${domain}', {
+                    oidcConformant: true,
+                    passwordlessMethod: 'link',
+                    allowedConnections: ['email', 'acme'],
+                    auth: {
+                        responseType: 'code',
+                        redirectUrl: '${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, '')}' + '/callback',
+                        params: {
+                            state: '${state}'
+                        }
                     }
-                    $('.enter-email').hide();
-                    $.growl.notice({message: "Email sent to " + email});
                 });
+                lock.show();
             }, 2000);
         });
 
