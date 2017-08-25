@@ -63,7 +63,7 @@
             setTimeout(function () {
                 webAuth.authorize({
                     connection: 'dropbox',
-                    scope: 'openid name email picture',
+                    scope: 'openid name email picture profile',
                     state: '${state}',
                     responseType: 'code'
                 }, function (err) {

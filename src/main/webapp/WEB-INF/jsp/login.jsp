@@ -30,12 +30,12 @@
                 var lock = new Auth0LockPasswordless('${clientId}', '${domain}', {
                     oidcConformant: true,
                     passwordlessMethod: 'link',
-                    allowedConnections: ['email', 'acme'],
                     auth: {
                         responseType: 'code',
                         redirectUrl: '${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, '')}' + '/callback',
                         params: {
-                            state: '${state}'
+                            state: '${state}',
+                            scope: 'openid profile'
                         }
                     }
                 });
