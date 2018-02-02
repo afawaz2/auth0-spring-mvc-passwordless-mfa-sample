@@ -28,7 +28,6 @@
         $(function () {
             setTimeout(function () {
                 var lock = new Auth0LockPasswordless('${clientId}', '${domain}', {
-                    oidcConformant: true,
                     passwordlessMethod: 'link',
                     auth: {
                         responseType: 'code',
