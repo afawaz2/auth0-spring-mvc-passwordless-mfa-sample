@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
     <link rel="stylesheet" type="text/css" href="/css/jquery.growl.css"/>
     <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="https://325-22887863-gh.circle-artifacts.com/0/home/ubuntu/lock/build/lock.min.js"></script>
+    <script src="https://cdn.auth0.com/js/lock/11.2/lock.min.js"></script>
     <script src="/js/jquery.growl.js" type="text/javascript"></script>
 </head>
 <body>

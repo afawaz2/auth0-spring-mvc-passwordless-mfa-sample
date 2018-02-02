@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="/css/jumbotron-narrow.css">
     <link rel="stylesheet" type="text/css" href="/css/jquery.growl.css"/>
     <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="https://cdn.auth0.com/js/auth0/8.9.3/auth0.min.js"></script>
+    <script src="https://cdn.auth0.com/js/auth0/8.9.2/auth0.min.js"></script>
     <script src="/js/jquery.growl.js" type="text/javascript"></script>
 </head>
 
