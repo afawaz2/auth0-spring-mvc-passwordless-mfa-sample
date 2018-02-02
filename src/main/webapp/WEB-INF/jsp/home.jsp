@@ -10,17 +10,17 @@
     <link rel="stylesheet" type="text/css" href="/css/jumbotron-narrow.css">
     <link rel="stylesheet" type="text/css" href="/css/jquery.growl.css"/>
     <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="//cdn.auth0.com/w2/auth0-7.2.1.js"></script>
+    <script src="https://cdn.auth0.com/js/auth0/8.9.2/auth0.min.js"></script>
     <script src="/js/jquery.growl.js" type="text/javascript"></script>
 </head>
 
 <body>
 
 <script type="text/javascript">
-    var auth0 = new Auth0({
+    var webAuth = new auth0.WebAuth({
         clientID: '${clientId}',
         domain: '${domain}',
-        callbackURL: "${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, '')}/acallback"
+        redirectUri: "${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, '')}/acallback"
     });
 </script>
 
@@ -49,32 +49,6 @@
         </c:if>
         <p><img class="avatar" src="${user.picture}"/></p>
     </div>
-    <div class="row marketing">
-        <div class="col-lg-6">
-            <h4>Subheading</h4>
-            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-            <h4>Subheading</h4>
-            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet
-                fermentum.</p>
-
-        </div>
-
-        <div class="col-lg-6">
-            <h4>Subheading</h4>
-            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-            <h4>Subheading</h4>
-            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet
-                fermentum.</p>
-
-        </div>
-    </div>
-
-    <footer class="footer">
-        <p> &copy; 2016 Company Inc</p>
-    </footer>
-
 </div>
 
 <script type="text/javascript">
@@ -87,10 +61,11 @@
 
             $.growl.notice({ message: "Linking dropbox." });
             setTimeout(function () {
-                auth0.login({
+                webAuth.authorize({
                     connection: 'dropbox',
-                    scope: 'openid name email picture',
-                    state: '${state}'
+                    scope: 'openid name email picture profile',
+                    state: '${state}',
+                    responseType: 'code'
                 }, function (err) {
                     // this only gets called if there was an error
                     console.error('Error logging in: ' + err);
